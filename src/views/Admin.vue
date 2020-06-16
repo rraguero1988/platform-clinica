@@ -1,3 +1,18 @@
 <template>
-    <h1>Yordanys</h1>
+<div>
+ <UsuarioChat/>
+  
+  </div>
+ 
 </template>
+
+
+<script>
+import UsuarioChat from '../components/UsuariosChat'
+export default {
+    
+    components:{
+        UsuarioChat
+    }
+}
+</script>

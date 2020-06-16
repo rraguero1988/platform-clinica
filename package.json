@@ -11,6 +11,7 @@
     "core-js": "^3.6.5",
     "material-design-icons-iconfont": "^5.0.1",
     "roboto-fontface": "*",
+    "socket.io-client": "^2.3.0",
     "vue": "^2.6.11",
     "vue-axios": "^2.1.5",
     "vue-router": "^3.2.0",

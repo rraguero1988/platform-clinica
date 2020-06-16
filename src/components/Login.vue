@@ -15,6 +15,7 @@
              <v-text-field type="email" v-model="usuario.email" label="Email"></v-text-field>
              <v-text-field type="password" v-model="usuario.password" label="Password"></v-text-field>
              <v-btn color="primary" block @click="ingresar()">Ingresar</v-btn>
+             <v-btn color="info" class="my-2" block @click="facebook()">Facebook</v-btn>
          </v-form>
          </v-card-text>
          <p>Si no tiene una cuenta registrese 
@@ -47,8 +48,12 @@ export default {
       async  ingresar(){
           const usuario = await axios.post('/iniciar',this.usuario)
           if(usuario){
+          localStorage.setItem('username',usuario.data.local.usuario)
           router.push({name:'Admin'})
           }
+        },
+        facebook(){
+            axios.get('/auth/facebook')
         }
     }
 }
@@ -69,5 +74,6 @@ export default {
        margin-left: 15px;
        padding-bottom: 10px;
        color: magenta;
+       
    }
 </style>
