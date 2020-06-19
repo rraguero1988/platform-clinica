@@ -1,24 +1,26 @@
 <template>
-<div class="fondo">
- <v-row>
-     <v-col class="mx-6">
+<v-main >
+     <v-img  :height="height" src="../assets/doctor01.jpg">
+     <v-container>
+     <v-row v-resize="onResize" class="d-flex">
+     <v-col  cols="12" sm="6" md="8">
          <router-link to="/">
          <h1>Plataforma KFE</h1>
          </router-link>
      </v-col>
      <v-spacer></v-spacer>
-     <v-col class="my-10">
+     <v-col class="my-10 justify-center"  cols="12" sm="6" md="4">
          <v-card class="form">
              <v-card-title>Login</v-card-title>
              <v-card-text>
-         <v-form @submit.prevent="login()">
+        
              <v-text-field type="email" v-model="usuario.email" label="Email"></v-text-field>
              <v-text-field type="password" v-model="usuario.password" label="Password"></v-text-field>
              <v-btn color="primary" block @click="ingresar()">Ingresar</v-btn>
              <v-btn color="info" class="my-2" block @click="facebook()">Facebook</v-btn>
-         </v-form>
+         
          </v-card-text>
-         <p>Si no tiene una cuenta registrese 
+         <p>Si no tiene una cuenta registro
              <router-link :to="{name:'Registro'}">
                  Aqui
              </router-link>
@@ -26,7 +28,9 @@
          </v-card>
      </v-col>
     </v-row>
-</div>
+    </v-container>
+     </v-img>
+</v-main>
   
 </template>
 
@@ -40,7 +44,8 @@ export default {
             usuario:{
                 email:'',
                 password:''
-            }
+            },
+            height:0
         }
     },
 
@@ -54,7 +59,10 @@ export default {
         },
         facebook(){
             axios.get('/auth/facebook')
-        }
+        },
+         onResize () {
+        this.height = window.innerHeight
+      },
     }
 }
 </script>
@@ -66,10 +74,6 @@ export default {
    background-repeat: no-repeat;
    background-size: cover;
 }
-.form{
-    width: 300px;
-    margin-right: 50px;
-   }
    p{
        margin-left: 15px;
        padding-bottom: 10px;

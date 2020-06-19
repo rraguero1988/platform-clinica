@@ -1,20 +1,27 @@
 <template>
-<v-main class="fondo">  
+
+<v-main v-resize="onResize"> 
+  
+  <v-img :height="height" src="../assets/fondo.jpg">
+    <v-row>
+      
+    </v-row>
      <v-app-bar 
   v-scroll="onScroll"
   fixed 
   flat
   :color="!isScroll ? 'transparent' : '#ee44aa'"
   :elevation="elevation"
+  class="hidden-sm-and-down"
   >
     <v-row>
-        <v-col class="mx-6 ">
+        <v-col class="mx-6 hidden-sm-and-down" >
           <router-link to="/">
           <h1 id="titulo">Plataforma KFE</h1>
          </router-link>
         </v-col>
      <v-spacer></v-spacer>
-       <v-col>
+       <v-col class="hidden-sm-and-down">
        <router-link :to="{name:'Login'}">
          <v-btn text :color="isScroll ? 'white' : 'primary'">Ingresar</v-btn>
        </router-link>
@@ -24,7 +31,15 @@
          </v-col>
     </v-row>
   </v-app-bar>
+  <v-app-bar fixed flat color='transparent' class="hidden-md-and-up m-5">
+    <v-app-bar-nav-icon   class=" colorButton" @click="onDrawer()"></v-app-bar-nav-icon>
+  </v-app-bar>
+  
+  
+  </v-img> 
+  
 </v-main>
+
 </template>
 
 <script>
@@ -32,12 +47,23 @@ export default {
     data(){
         return{
             isScroll:false,
-            elevation:0
+            elevation:0,
+            height:0,
+            drawer:false
+           
         }
+    },
+    watch:{
+   
+    },
+   
+    mounted(){
+     this.height = window.innerHeight
     },
    methods:{
         onScroll(){
         const offset = window.pageYOffset
+      
          let titulo = document.getElementsByTagName('h1')
          if(offset > 70 ){
             titulo[0].classList.add('titulo')
@@ -50,7 +76,13 @@ export default {
             }
               //console.log(window.innerHeight)
        
-        }
+        },
+         onResize () {
+        this.height = window.innerHeight
+      },
+      onDrawer(){
+        this.$emit('drawer',true)
+      }
    }
 }
 </script>
@@ -59,11 +91,13 @@ export default {
 <style scoped>
 .titulo{
     color: white;
+    
 }
-.fondo{
-  height: 628px;
-  background-image: url('../assets/fondo.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
+.colorButton{
+  margin: 5px;
+  color: green;
+  position: absolute;
 }
+
+
 </style>

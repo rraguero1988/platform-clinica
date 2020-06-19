@@ -1,8 +1,8 @@
 <template>
   <v-app>
-   <v-content>
+   <v-main>
       <router-view></router-view>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 
@@ -26,5 +26,8 @@ export default {
 <style>
   .router-link-active{
        text-decoration: none;
+   }
+   a{
+     text-decoration: none;
    }
 </style>

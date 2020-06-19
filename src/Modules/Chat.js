@@ -5,7 +5,7 @@ import io from 'socket.io-client'
 export default {
 namespaced:true,
 state:{
-  socket: io('http://localhost/4000'),
+  socket: io('http://localhost/3001'),
   usuarios:[],
   mensjaes:[],
   usuario:localStorage.getItem('username') || ''
