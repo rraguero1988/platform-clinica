@@ -1,15 +1,9 @@
 <template>
 <v-main >
-     <v-img  :height="height" src="../assets/doctor01.jpg">
+    
      <v-container>
      <v-row v-resize="onResize" class="d-flex">
-     <v-col  cols="12" sm="6" md="8">
-         <router-link to="/">
-         <h1>Plataforma KFE</h1>
-         </router-link>
-     </v-col>
-     <v-spacer></v-spacer>
-     <v-col class="my-10 justify-center"  cols="12" sm="6" md="4">
+     <v-col class="my-10 justify-center"  cols="12">
          <v-card class="form">
              <v-card-title>Login</v-card-title>
              <v-card-text>
@@ -29,7 +23,7 @@
      </v-col>
     </v-row>
     </v-container>
-     </v-img>
+    
 </v-main>
   
 </template>
@@ -54,7 +48,15 @@ export default {
           const usuario = await axios.post('/iniciar',this.usuario)
           if(usuario){
           localStorage.setItem('username',usuario.data.local.usuario)
-          router.push({name:'Admin'})
+          localStorage.setItem('rol',usuario.data.local.rol)
+          if(usuario.data.local.rol === 'administrador'){
+             router.push({name:'Admin'})
+          }else if(usuario.data.local.rol === 'doctor'){
+               router.push({name:'Doctor'})
+          }else if(usuario.data.local.rol === 'cliente'){
+               router.push({name:'Doctor'})
+          }
+         
           }
         },
         facebook(){

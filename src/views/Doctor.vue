@@ -1,20 +1,17 @@
 <template>
 <div>
- <UsuarioChat/>
-  <v-btn @click="salir()">Salir</v-btn>
-  </div>
- 
+      <h1>Doctores</h1>
+     <v-btn @click="salir()">Salir</v-btn>
+</div>
+  
 </template>
-
 
 <script>
 import router from '../router'
-import UsuarioChat from '../components/UsuariosChat'
+
 export default {
     
-    components:{
-        UsuarioChat
-    },
+   
     methods:{
         salir(){
         localStorage.removeItem('rol')

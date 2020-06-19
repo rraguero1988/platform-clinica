@@ -1,15 +1,10 @@
 <template>
 <v-main>
-     <v-img  :height="height" src="../assets/doctor01.jpg">
+    
      <v-container>
      <v-row v-resize="onResize" class="d-flex">
-     <v-col  cols="12" sm="6" md="8">
-         <router-link to="/">
-         <h1>Plataforma KFE</h1>
-         </router-link>
-     </v-col>
-     <v-spacer></v-spacer>
-     <v-col class="my-10 justify-center"  cols="12" sm="6" md="4">
+    
+     <v-col class="my-10 justify-center"  cols="12">
          <v-card>
              <v-card-title>Registro</v-card-title>
              <v-card-text>
@@ -29,7 +24,7 @@
      </v-col>
     </v-row>
     </v-container>
-    </v-img> 
+   
 </v-main>
   
 </template>
