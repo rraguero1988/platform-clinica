@@ -32,6 +32,7 @@
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import router from '../router'
+import {mapState,mapActions} from 'vuex'
 export default {
     data(){
         return{
@@ -44,11 +45,14 @@ export default {
     },
 
     methods:{
+        ...mapActions('Chat',['joinServe','listen']),
       async  ingresar(){
           const usuario = await axios.post('/iniciar',this.usuario)
           if(usuario){
-          localStorage.setItem('username',usuario.data.local.usuario)
+          await localStorage.setItem('username',usuario.data.local.usuario)
           localStorage.setItem('rol',usuario.data.local.rol)
+          this.joinServe()
+              this.listen()
           if(usuario.data.local.rol === 'administrador'){
              router.push({name:'Admin'})
           }else if(usuario.data.local.rol === 'doctor'){

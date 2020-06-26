@@ -19,7 +19,7 @@
         dense
       >
         <v-list-item-group
-          v-model="group"
+          
           active-class="deep-purple--text text--accent-4"
         >
         <h1 class="text-center mb-5">Plataforma KFE</h1>
@@ -68,11 +68,7 @@ console.log(value)
 }
   },
   methods:{
-    movio(){
-     /*let post = evt.target;
-     console.log(post.scrollTop)*/
-     console.log('movio')
-    },
+ 
     onScroll(){
       const offset = window.pageYOffset
       console.log(offset)

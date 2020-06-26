@@ -10,7 +10,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 
 Vue.use(axios,VueAxios)
-axios.defaults.baseURL = 'http://localhost:3002'
+axios.defaults.baseURL = 'http://localhost:3000'
 
 Vue.config.productionTip = false
 
