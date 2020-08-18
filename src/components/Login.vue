@@ -45,14 +45,14 @@ export default {
     },
 
     methods:{
-        ...mapActions('Chat',['joinServe','listen']),
       async  ingresar(){
           const usuario = await axios.post('/iniciar',this.usuario)
           if(usuario){
           await localStorage.setItem('username',usuario.data.local.usuario)
           localStorage.setItem('rol',usuario.data.local.rol)
-          this.joinServe()
-              this.listen()
+          localStorage.setItem('name',usuario.data.local.nombre)
+           localStorage.setItem('apellido',usuario.data.local.apellido)
+
           if(usuario.data.local.rol === 'administrador'){
              router.push({name:'Admin'})
           }else if(usuario.data.local.rol === 'doctor'){

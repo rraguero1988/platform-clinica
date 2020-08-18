@@ -31,7 +31,8 @@ export default {
            onResize () {
         this.height = window.innerHeight
       },
-    }
+    },
+    
 }
 </script>
 

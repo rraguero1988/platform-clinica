@@ -1,5 +1,5 @@
 <template>
-<v-main >
+<v-main id="container">
  <NavBar @drawer="drawer = $event"/>
   
     <div class="servicios text-center" >
@@ -74,7 +74,12 @@ console.log(value)
       console.log(offset)
     },
   
-  }
+  },
+    mounted(){
+    const container = document.getElementById('container')
+           container.scrollTop = container.scrollHeight
+    }
+  
 }
 </script>
 
